@@ -1,0 +1,102 @@
+body { background: rgb(236, 240, 241); }
+a { color: rgb(44, 62, 80); text-decoration: none; font-weight: bold; }
+
+/* colors */
+
+.Brzycki { color: rgb(22, 160, 133); font-weight: bold;}
+.Epley { color: rgb(44, 62, 80); font-weight: bold;}
+.Lander { color: rgb(231, 76, 60); font-weight: bold;}
+.NSCA { color: rgb(187, 169, 0); font-weight: bold;}
+
+/* sections */
+
+.head-section, .head-section a {
+  color: #FFF;
+  background: rgb(26, 188, 156);
+}
+.head-section a { color: #FFF; text-decoration: none; font-weight: bold; }
+.head-section p { margin-top: 5px; margin-bottom: 5px; }
+
+.promo-section {
+  text-align: center;
+  color: #FFF;
+  background-color: #000;
+}
+
+.promo-section a { color: #FFF; text-decoration: none; font-weight: bold;}
+
+.chart-section {
+  margin-top: 5px;
+  padding-top: 5px;
+}
+
+.footer-section, .main-section, .what-is-1rm-section {
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.footer-section {
+  background: rgb(44, 62, 80);
+  color: #c0c0c0;
+}
+
+/* tables */
+
+#reps-table, #percentages-table { width: 100%; margin: 0 auto; }
+
+#reps-table a { color: rgb(26, 188, 156);}
+
+#reps-table th, #percentages-table th {
+  padding: 3px 3px;
+  text-align: left;
+}
+#reps-table td, #percentages-table td {
+  padding: 3px 3px;
+  text-align: left;
+}
+#reps-table td:last-child {font-weight: bold; color: #E91818; }
+
+th:first-child,
+td:first-child {
+  padding-left: 0;
+}
+th:last-child,
+td:last-child {
+  padding-right: 0;
+}
+th { background-color: rgba(44, 62, 80, 0.2); }
+
+/* input */
+
+.input-container { width: 50%; float: left; }
+.buttons-container { width: 50%; float: right;}
+
+#weightInput, #repsInput { width: 100%; vertical-align: bottom; }
+
+.change-btn {
+  width: 45%;
+  margin-left: 3px;
+  font-size: 3.0rem;
+  padding: 0;
+  color: #FFF;
+  background-color: rgb(44, 62, 80);
+  border-color: #CCC;
+}
+.change-btn:hover {
+  color: #FFF;
+  background-color: rgba(44, 62, 80, 0.9);
+  border-color: #CCC;
+}
+
+/* misc */
+
+.share-container a img {
+  width: 32px;
+  height: 32px;
+  margin: 3px;
+  padding: 0;
+  display: inline;
+}
+
+.fb-share-button, .twitter-share-button { margin: 5px; float: right; height: 20px !important; }
+.fb-share-button a { margin: 0; padding: 0; }

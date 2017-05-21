@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Rep and Weight Calculator</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <meta property="og:url"           content="http://www.calculate1rm.com" />
+	<meta property="og:type"          content="website" />
+	<meta property="og:title"         content="Calculate 1 rep max" />
+	<meta property="og:description"   content="Calculate weight/reps using multiple different formulas." />
+	<meta property="og:image"         content="http://www.calculate1rm.com/images/1rm.gif" />
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,1200" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W2X4JM2');</script>
+<!-- End Google Tag Manager -->
+
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2X4JM2"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<noscript>JavaScript is off. There's no way to calculate anything if you don't enable it from your browser. Here are the <a href="http://www.enable-javascript.com" target="_blank"> instructions how to enable JavaScript in your web browser</a></noscript>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="section head-section">
+    <div class='container'>
+      <div class="row">
+        <div class="twelve columns">
+          <div class="u-pull-right share-container">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=www.calculate1rm.com" target="_blank">
+              <image src='./images/social/facebook.png' alt='facebook'>
+            </a>
+            <a href="https://twitter.com/share?url=http://www.calculate1rm.com" target="_blank">
+              <image src='./images/social/twitter.png' alt='twitter'>
+            </a>
+          </div>
+          <h1 class='site-title'>Reps and Weights calculator</h1>
+          <p>Enter the weight and times lifted to get an estimate of <a href='#what-is-1rm'>1RM (max weight for one rep)</a> calculated with <a href='#method'>six different methods</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section promo-section">
+    <a href='http://www.iherb.com/Sports-Fitness-Athletic?rcode=TAP695'>Supplements from iHerb - Great discounts</a>
+  </div>
+
+  <div class="section main-section">
+    <div class='container'>
+      <div class='row'>
+
+        <div class='four columns'>
+          <h5>Enter weight and reps</h5>
+          <label for="weightInput">Weight</label>
+          <div class='row'>
+            <div class='input-container'>
+              <input type="text" placeholder="weight" value='90' id="weightInput">
+            </div>
+            <div class='buttons-container'>
+              <button id='increase-weight-button' type='button' class="change-btn">+</button>
+              <button id='decrease-weight-button' type='button' class="change-btn">-</button>
+            </div>
+          </div>
+          <label for="weightInput">Reps</label>
+          <div class='row'>
+            <div class='input-container'>
+              <input type="text" placeholder="reps" value='10' id="repsInput">
+            </div>
+            <div class='buttons-container'>
+              <button id='increase-reps-button' type='button' class="change-btn">+</button>
+              <button id='decrease-reps-button' type='button' class="change-btn">-</button>
+            </div>
+          </div>
+          <div class='row'>
+            <p>Calculations: <span class='Brzycki'>Brzycki</span>, <span class='Epley'>Epley</span>, <span class='Lander'>Lander</span>, <span class='NSCA'>NSCA</span>.
+            <a href='#method'>Learn more</a></p>
+          </div>
+        </div>
+
+        <div class='eight columns'>
+          <a class='u-pull-right' href='#confused'>What are these?</a>
+          <h5>Estimated weights/reps</h5>
+          <!-- <div class="row"> -->
+            <div id='calculationsTable'></div>
+          <!-- </div> -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="section chart-section">
+    <div class='container'>
+      <h5>Percentages of 1RM</h5>
+      <div class="row">
+        <div class="seven columns">
+          <div id='percentagesTable'></div>
+        </div>
+        <div class='five columns'>
+          <canvas id="chartRepsWeight"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id='what-is-1rm' class="section what-is-1rm-section">
+    <div class='container'>
+      <div class='row'>
+
+        <div class='nine columns'>
+          <h3>What is 1RM - one rep max</h3>
+          <p>1RM stands for one rep maximum - the maximum weight that can be lifted once. It is perhaps the best way to measure true strength. The most accurate way to find out your one rep max (1RM) is to test it under the barbell. This however can mess your program, affect recovery time and possibly increase the chance of injury.
+          1RM can also be estimated using different methods. The formulas defined by Brzycki, Epley and Landers are quite reliable and popular. More advanced lifters may want to look at exercise specific estimates from NSCA (National Strength and Conditioning Association).</p>
+          <h3>Why 1RM matters</h3>
+          <p>Some programs suggest training with a certain percentage of your 1RM. In order to follow the program you need to know your 1RM. Sometimes you may also
+            want to monitor progress when you are not performing one rep lifts and may even train with periodization schemes where you may wish to compare work done using different reps/sets (e.g. have I increased my bench if I did 90kg x 10 reps 2 weeks ago vs 105kg x 6 reps today).
+            Maybe you are preparing for a meet and want to lift a certain amount. Without testing you can calculate how much you should lift with more reps when conditioning.
+             Another great reason to calculate your 1RM is to actually compare it to your tested 1RM. If you calculate a 1RM and your tested 1RM is way lower then it is a good indicator that there's something wrong with either your lifting technique or a lagging muscle group which prevents you from reaching true 1RM. However note that technically difficult olympic exercises (snatch etc) do not work well with calculations due to huge variance in technique which may be the limiting factor instead of strength.</p>
+          <h3 id='method'>Method</h3>
+          <p>The exact formula for each calculation used in this site can be found in the references listed below. The formulas are based on a regression analysis of large sample of lifters performing a certain amount of reps on a given weight and testing their true 1RM. A formula is defined to match the regression pattern and tested on a new group of lifters.
+           Each of the formulas used on this site have been used for a long time and are fairly accurate for typical exercises. They can never be fully accurate due to differences between lifters (e.g. difference in fast/slow muscle fiber ratio).</p>
+           <p>1RM may be calculated using a formula such as Brzycki (<span class='Brzycki'>A</span>), Epley (<span class='Epley'>B</span>) or Lander (<span class='Lander'>C</span>) or it can be calculated using coefficients such as the ones defined by NSCA (<span class='NSCA'>D</span>).</p>
+           <h3 id='confused'>Confused?</h3>
+           <p>Still not sure how to use the calculations? Let's say you lifted X weight (unit is irrelevant kg/lbs/sheep) for Y reps. Put the X in the weight input box and Y in the reps input box.
+             You can see the tables update with estimated max weight you can lift once and weights that you can lift for 1-10 times. The first row (General A, estimate calculated with Brzycki formula) is a good estimate for most people for most exercises. If the weight and reps your entered are for bench press, squat or deadlift and you are an intermediate/advanced lifter then you may want to check the NSCA numbers for specific exercises.</p>
+          <ul>
+          <li><span class='Brzycki'>General A</span> is calculated with <span class='Brzycki'>Brzycki method 1)</span>.</li>
+          <li><span class='Epley'>General B</span> is calculated with <span class='Epley'>Epley method 2)</span>.</li>
+          <li><span class='Lander'>General C</span> is calculated with <span class='Lander'>Lander method 3)</span>.</li>
+          <li><span class='NSCA'>NSCA numbers</span> are calculated with <span class='NSCA'>NSCA exercise specific coefficients</span>.</li>
+          </ul>
+        </div>
+
+        <div class="three columns">
+          <h5>Recommended products</h5>
+          <p><a href="http://www.iherb.com/Sports-Fitness-Athletic?rcode=TAP695">iHerb supplements</a><br>
+          <a href="http://www.dx.com/c/health-beauty-1799/health-monitors-1732/body-fat-monitors-1734?Utm_rid=75013036&Utm_source=affiliate">Body Fat Monitors</a><br>
+          <a href="http://www.dx.com/c/consumer-electronics-199/smart-devices-178/wearable-devices-1781?Utm_rid=75013036&Utm_source=affiliate">Cheap Trackers</a><br>
+          <a href="http://www.dx.com/s/fitness?category=1601">Misc gear, ab wheel, rollers</a><br>
+          <a href="https://www.ipage.com/join/index.bml?AffID=860467">Hosting by iPage</a></p>
+        </div>
+
+        <div class="three columns">
+          <h5>References</h5>
+          <ol>
+            <li>Brzycki, Matt (1998). A Practical Approach To Strength Training. McGraw-Hill. ISBN 1-57028-018-5.</li>
+            <li>Epley, Boyd (1985). Boyd Epley Workout. Lincoln, NE: Body Enterprises p.86.</li>
+            <li>Landers, J (1984). Maximum based on reps NSCA 6(6).</li>
+          </ol>
+        </div>
+
+        <div class="three columns">
+          <h5>About this site</h5>
+          <p>This site was created to be the best and most intuitive way to calculate 1RM. I created the site because I was unhappy with existing calculators. This service is not affiliated or sponsored by anyone.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="section footer-section">
+    <div class='container'>
+      <div class="row">
+        <div class="twelve columns">
+          <p>Copyright © 2016 calculate1rm.com - admin (at) calculate1rm.com</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- functionality and template -->
+
+<script id="reps-template" type="text/x-handlebars-template">
+  <table id='reps-table' style='width: 100%;'>
+    <thead>
+      <tr>
+      <th>Reps</th>
+      <th>10</th><th>9</th><th>8</th><th>7</th><th>6</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each this}}
+      <tr>
+      <td><span class='{{formula}}'>{{name}}</span></td>
+      {{#reps}}
+        <td>{{this}}</td>
+      {{/reps}}
+      </tr>
+      {{/each}}
+      <tr><td>Note:</td><td colspan='9'>NSCA estimates only apply for a specific exercise.</td><td></td></tr>
+    </tbody>
+  </table>
+
+</script>
+
+<script id="percentages-template" type="text/x-handlebars-template">
+  <table id='percentages-table' style='width: 100%;'>
+    <thead>
+      <tr>
+      <th>Load</th>
+      <th>50%</th><th>60%</th><th>70%</th><th>75%</th><th>80%</th><th>85%</th><th>90%</th><th>95%</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each this}}
+      <tr>
+      <td><span class='{{formula}}'>{{name}}</span></td>
+      {{#percentages}}
+        <td>{{this}}</td>
+      {{/percentages}}
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+</script>
+
+<script src="js/main.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-80443488-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<div style='display: none;'>
+  <p style='color: rgba(0,0,0,0)'><a href="http://www.savujaliekki.com/">Grillausfoorumi Savu ja Liekki</a></p>
+</div>
+</body>
+</html>
