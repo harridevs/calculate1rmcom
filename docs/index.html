@@ -57,6 +57,11 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-W2X4JM2');</script>
   <!-- End Google Tag Manager -->
+  <script>
+    $(function(){
+        $(".media"+(new Date().getTime() % 2 +1)).css("display", "block");
+    });
+  </script>
 </head>
 <body>
 
@@ -72,18 +77,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="section head-section">
     <div class='container'>
       <div class="row">
-        <div class="twelve columns">
-          <div class="u-pull-right share-container">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=www.calculate1rm.com" target="_blank">
-              <image src='./images/social/facebook.png' alt='facebook'>
-            </a>
-            <a href="https://twitter.com/share?url=http://www.calculate1rm.com" target="_blank">
-              <image src='./images/social/twitter.png' alt='twitter'>
-            </a>
-          </div>
-          <h1 class='site-title'>Reps and Weights calculator</h1>
-          <p>Enter the weight and times lifted to get an estimate of <a href='#what-is-1rm'>1RM (max weight for one rep)</a> calculated with <a href='#method'>six different methods</a>.</p>
+        <div class="u-pull-right share-container">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=www.calculate1rm.com" target="_blank">
+            <image src='./images/social/facebook.png' alt='facebook'>
+          </a>
+          <a href="https://twitter.com/share?url=http://www.calculate1rm.com" target="_blank">
+            <image src='./images/social/twitter.png' alt='twitter'>
+          </a>
         </div>
+        <h1 class='site-title'>Reps and Weights calculator</h1>
+        <p>Enter the weight and times lifted to get an estimate of <a href='#what-is-1rm'>1RM (max weight for one rep)</a> calculated with <a href='#method'>six different methods</a>.</p>
       </div>
     </div>
   </div>
@@ -127,9 +130,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class='eight columns'>
           <a class='u-pull-right' href='#confused'>What are these?</a>
           <h5>Estimated weights/reps</h5>
-          <!-- <div class="row"> -->
             <div id='calculationsTable'></div>
-          <!-- </div> -->
         </div>
 
       </div>
@@ -138,13 +139,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="section chart-section">
     <div class='container'>
-      <h5>Percentages of 1RM</h5>
+
       <div class="row">
-        <div class="seven columns">
+        <div class="eight columns">
+          <h5>Percentages of 1RM</h5>
           <div id='percentagesTable'></div>
         </div>
-        <div class='five columns'>
-          <canvas id="chartRepsWeight"></canvas>
+        <div class='four columns'>
+          <h5>Promo</h5>
+          <div id="inline" class="media1" style="display:none;">
+            <a href="http://www.dx.com/lp/en20170522health?Utm_rid=75013036" target="_blank">
+              <image class='media-image' src='./media/pic_a.jpg' alt='cool gadgets'>
+            </a>
+          </div>
+          <div id="inline" class="media2" style="display:none;">
+            <a href="http://c.dx.com/collection/201705/HomelyMan/en/index.html?Utm_rid=75013036" target="_blank">
+              <image class='media-image' src='./media/pic_b.jpg' alt='cool gadgets'>
+            </a>
+          </div>
+
         </div>
       </div>
     </div>
@@ -178,6 +191,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </ul>
         </div>
 
+        <!--
         <div class="three columns">
           <h5>Recommended products</h5>
           <p><a href="http://www.iherb.com/Sports-Fitness-Athletic?rcode=TAP695">iHerb supplements</a><br>
@@ -185,7 +199,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <a href="http://www.dx.com/c/consumer-electronics-199/smart-devices-178/wearable-devices-1781?Utm_rid=75013036&Utm_source=affiliate">Cheap Trackers</a><br>
           <a href="http://www.dx.com/s/fitness?category=1601">Misc gear, ab wheel, rollers</a><br>
           <a href="https://www.ipage.com/join/index.bml?AffID=860467">Hosting by iPage</a></p>
-        </div>
+        </div> -->
 
         <div class="three columns">
           <h5>References</h5>
@@ -194,17 +208,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li>Epley, Boyd (1985). Boyd Epley Workout. Lincoln, NE: Body Enterprises p.86.</li>
             <li>Landers, J (1984). Maximum based on reps NSCA 6(6).</li>
           </ol>
-        </div>
 
-        <div class="three columns">
           <h5>About this site</h5>
-          <p>This site was created to be the best and most intuitive way to calculate 1RM. I created the site because I was unhappy with existing calculators. This service is not affiliated or sponsored by anyone.</p>
+          <p>This site was created to be the best and most intuitive way to calculate 1RM and see the amount of reps you can get with a given weight. I created the site because I was unhappy with existing calculators. This service is not affiliated or sponsored by anyone.</p>
         </div>
       </div>
 
     </div>
   </div>
 
+  <div class="section graph-section">
+    <div class='container'>
+      <h5>Graph</h5>
+      <div class="row">
+        <div class='eight columns'>
+          <canvas id="chartRepsWeight"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="section footer-section">
     <div class='container'>
