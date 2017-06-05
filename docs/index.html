@@ -68,7 +68,19 @@
        });
     }
   </script>
-
+  <!--Adblock Check-->
+  <script src="/js/ads.js" type="text/javascript"></script>
+  <script type="text/javascript">// <![CDATA[
+  jQuery(document).ready(checkAds());
+          function checkAds() {
+              if (document.getElementById('adsense') != undefined) {
+                  document.write("<script>dataLayer.push({'event':'adBlock','blocked':'false'});</sc" + "ript>");
+              } else {
+                  document.write("<script>dataLayer.push({'event':'adBlock','blocked':'true'});</sc" + "ript>");
+              }
+          }
+  // ]]></script>
+  <!--End Adblock Check-->
   <!-- Media toggler -->
   <script>
     $(function(){
@@ -105,7 +117,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <div class="section promo-section">
-    <a href='http://www.iherb.com/Sports-Fitness-Athletic?rcode=TAP695'>Supplements from iHerb - Great discounts</a>
+    <a href='#' class='color: red;'>We are changing hosting - there may be short breaks</a>
   </div>
 
   <div class="section main-section">
