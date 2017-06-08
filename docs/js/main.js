@@ -1,3 +1,14 @@
+// Hide show graph
+
+function toggleGraph() {
+    var x = document.getElementById('graph-container');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+
 // Data structure
 
 var data = {

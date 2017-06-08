@@ -60,8 +60,7 @@
 <body>
 
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2X4JM2"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2X4JM2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 <noscript>JavaScript is off. There's no way to calculate anything if you don't enable it from your browser. Here are the <a href="http://www.enable-javascript.com" target="_blank"> instructions how to enable JavaScript in your web browser</a></noscript>
@@ -115,6 +114,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           </div>
           <div class='row'>
+            <button style='width: 100% !important;' onclick="toggleGraph()">Toggle Graph</button>
+          </div>
+          <div class='row'>
             <p>Calculations: <span class='Brzycki'>Brzycki</span>, <span class='Epley'>Epley</span>, <span class='Lander'>Lander</span>, <span class='NSCA'>NSCA</span>.
             <a href='#method'>Learn more</a></p>
           </div>
@@ -126,6 +128,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div id='calculationsTable'></div>
         </div>
 
+      </div>
+    </div>
+  </div>
+
+  <div id="graph-container" class="section graph-section" display='none'>
+    <div class='container'>
+      <h5>Graph</h5>
+      <div class="row">
+        <div class='twelve columns'>
+          <canvas id="chartRepsWeight"></canvas>
+        </div>
       </div>
     </div>
   </div>
@@ -207,17 +220,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-    </div>
-  </div>
-
-  <div class="section graph-section">
-    <div class='container'>
-      <h5>Graph</h5>
-      <div class="row">
-        <div class='eight columns'>
-          <canvas id="chartRepsWeight"></canvas>
-        </div>
-      </div>
     </div>
   </div>
 
