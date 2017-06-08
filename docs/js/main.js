@@ -13,15 +13,15 @@ function toggleGraph() {
 
 var data = {
   brzycki: {
-    name: "General A",
+    name: "Calculation 1",
     formula: "Brzycki"
   },
   epley: {
-    name: "General B",
+    name: "Calculation 2",
     formula: "Epley",
   },
   lander: {
-    name: "General C",
+    name: "Calculation 3",
     formula: "Lander"
   },
   nscabench: {
