@@ -7,6 +7,7 @@ function toggleGraph() {
     } else {
         x.style.display = 'none';
     }
+    document.getElementById('graph-container').scrollIntoView();
 }
 
 // Data structure
