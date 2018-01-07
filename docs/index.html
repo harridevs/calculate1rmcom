@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic Page Needs -->
+  <meta charset="utf-8">
+  <title>Rep and Weight Calculator - 1RM - 1 rep max</title>
+  <meta name="description" content="Calculate your 1 rep max using multiple formulas.">
+  <meta name="author" content="">
+  <meta property="og:url"           content="http://www.calculate1rm.com" />
+	<meta property="og:type"          content="website" />
+	<meta property="og:title"         content="Calculate 1 rep max" />
+	<meta property="og:description"   content="Calculate weight/reps using multiple different formulas." />
+	<meta property="og:image"         content="http://www.calculate1rm.com/images/1rm.gif" />
+
+  <!-- Mobile Specific Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/bulma.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css"> -->
+  <link rel="stylesheet" href="css/custom.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
+<body class='has-bg-image'>
+  <noscript>JavaScript is off. There's no way to calculate anything if you don't enable it from your browser. Here are the <a href="http://www.enable-javascript.com" target="_blank"> instructions how to enable JavaScript in your web browser</a></noscript>
+  
+  <section class="hero transparent-bg-section">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Reps and Weights calculator
+        </h1>
+        <p class="subtitle">
+          Enter the weight and reps to get an estimate of <a href='#what-is-1rm'>your 1RM (one rep max)</a>
+        <br/>
+          and various rep and percentage schemes calculated with <a href='#method'>three different methods</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class='section transparent-bg'>
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          
+          <h2 class="title is-3">Weight and reps</h2>
+
+          <div class="columns is-mobile">
+            <div class="column is-half">
+              <div class="field">
+                <div class="control">
+                  <input id="weightInput" class="input" type="text" placeholder="weight" value='100'>
+                </div>
+              </div>
+            </div>
+
+            <div class="column is-half">
+              <div class="buttons has-addons is-right">
+                <span id='increase-weight-button' class="button"><i class="fas fa-plus"></i></span>
+                <span id='decrease-weight-button' class="button"><i class="fas fa-minus"></i></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="columns is-mobile">
+            <div class="column is-half">
+              <div class="field">
+                <div class="control">
+                  <input id="repsInput" class="input" type="text" placeholder="reps" value='10'>
+                </div>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="buttons has-addons is-right">
+                <span id='increase-reps-button' class="button"><i class="fas fa-plus"></i></span>
+                <span id='decrease-reps-button' class="button"><i class="fas fa-minus"></i></span>
+              </div>
+            </div>
+          </div>
+          <p class="subtitle">
+            NSCA calculations and graph coming soon. Until then you can use the <a href='old/index.html'>old site</a></p>
+          </p>
+        </div>
+
+        <div class="column">
+          <h2 class="title is-3">Weights for reps</h2>
+          <div id='calculationsTable'></div>
+        </div>
+
+        <div class="column">
+          <h2 class="title is-3">Percentages of 1RM</h2>
+          <div id='percentagesTable'></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  
+  <section class='section transparent-bg-section'>
+    <div class="container">
+      <div class="columns">
+        <div class="column is-two-thirds">
+          <div class='content'>
+            <h3 class='title is-3' id='what-is-1rm'>What is 1RM - one rep max</h3>
+            <p>1RM stands for one rep maximum - the maximum weight that can be lifted once. It is perhaps the best way to measure true strength. The most accurate way to find out your one rep max (1RM) is to test it under the barbell. This however can mess your program, affect recovery time and possibly increase the chance of injury.
+            1RM can also be estimated using different methods. The formulas defined by Brzycki, Epley and Landers are quite reliable and popular. More advanced lifters may want to look at exercise specific estimates from NSCA (National Strength and Conditioning Association).</p>
+            <h3 class='title is-spaced is-3'>Why 1RM matters</h3>
+            <p>Some programs suggest training with a certain percentage of your 1RM. In order to follow the program you need to know your 1RM. Sometimes you may also
+              want to monitor progress when you are not performing one rep lifts and may even train with periodization schemes where you may wish to compare work done using different reps/sets (e.g. have I increased my bench if I did 90kg x 10 reps 2 weeks ago vs 105kg x 6 reps today).
+              Maybe you are preparing for a meet and want to lift a certain amount. Without testing you can calculate how much you should lift with more reps when conditioning.
+                Another great reason to calculate your 1RM is to actually compare it to your tested 1RM. If you calculate a 1RM and your tested 1RM is way lower then it is a good indicator that there's something wrong with either your lifting technique or a lagging muscle group which prevents you from reaching true 1RM. However note that technically difficult olympic exercises (snatch etc) do not work well with calculations due to huge variance in technique which may be the limiting factor instead of strength.</p>
+            <h3 class='title is-3' id='method'>Method</h3>
+            <p>The exact formula for each calculation used in this site can be found in the references listed below. The formulas are based on a regression analysis of large sample of lifters performing a certain amount of reps on a given weight and testing their true 1RM. A formula is defined to match the regression pattern and tested on a new group of lifters.
+            Each of the formulas used on this site have been used for a long time and are fairly accurate for typical exercises. They can never be fully accurate due to differences between lifters (e.g. difference in fast/slow muscle fiber ratio).</p>
+            <p>1RM may be calculated using a formula such as Brzycki (<span class='Brzycki'>A</span>), Epley (<span class='Epley'>B</span>) or Lander (<span class='Lander'>C</span>) or it can be calculated using coefficients such as the ones defined by NSCA (<span class='NSCA'>D</span>).</p>
+            <h3 class='title is-3' id='confused'>Confused?</h3>
+            <p>Still not sure how to use the calculations? Let's say you lifted 100kg (unit is irrelevant kg/lbs/whatever) for 8 reps. Put the the weight (100kg) in the weight input box and amount of reps (8) in the reps input box.
+              You can see the tables update with estimated max weight you can lift once and weights that you can lift for 1-10 times. The first column (A, estimate calculated with Brzycki formula) is a good estimate for most people for most exercises. If the weight and reps your entered are for bench press, squat or deadlift and you are an intermediate/advanced lifter then you may want to check the NSCA numbers for specific exercises (only available from the old site at the moment)..</p>
+            <ul>
+            <li><span class='Brzycki'>Calculation A</span> is calculated with <span class='Brzycki'>Brzycki method 1)</span>.</li>
+            <li><span class='Epley'>Calculation B</span> is calculated with <span class='Epley'>Epley method 2)</span>.</li>
+            <li><span class='Lander'>Calculation C</span> is calculated with <span class='Lander'>Lander method 3)</span>.</li>
+            <!-- <li><span class='NSCA'>NSCA numbers</span> are calculated with <span class='NSCA'>NSCA exercise specific coefficients</span>.</li> -->
+            </ul>
+          </div>
+        </div>
+        <div class='column'>
+          <div class='content'>
+            <h5>References</h5>
+            <ol>
+              <li>Brzycki, Matt (1998). A Practical Approach To Strength Training. McGraw-Hill. ISBN 1-57028-018-5.</li>
+              <li>Epley, Boyd (1985). Boyd Epley Workout. Lincoln, NE: Body Enterprises p.86.</li>
+              <li>Landers, J (1984). Maximum based on reps NSCA 6(6).</li>
+            </ol>
+
+            <h5>About this site</h5>
+            <p>This site was created to be the best and most intuitive way to calculate 1RM and see the amount of reps you can get with a given weight. I created the site because I was unhappy with existing calculators. This service is not affiliated or sponsored by anyone.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class='transparent-bg-footer'>
+  <footer class='footer'>
+    <div class='container level'>
+      <div>
+        <p><i class="fas fa-copyright"></i> Copyright © 2016-2018 calculate1rm.com</p> 
+        <p><i class="fas fa-envelope-square"></i> admin (at) calculate1rm.com</p>
+      </div>
+      <div class='level-right'>
+        <img src="https://bulma.io/images/made-with-bulma--dark.png" alt="Made with Bulma" width="128" height="24"/>
+      </div>
+    </div>
+  </footer>
+</section>
+<!-- functionality and template -->
+
+<script id="reps-template" type="text/x-handlebars-template">
+  <table id='reps-table' class='table is-striped is-fullwidth is-narrow'>
+
+    <thead>
+      <tr>
+        <th>Reps</th><th>A</th><th>B</th><th>C</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {{#each data.reps}}
+        <tr>
+          {{#each this}}<td>{{.}}</td>{{/each}}
+        </tr>
+      {{/each}}
+      
+    </tbody>
+  </table>
+
+</script>
+
+<script id="percentages-template" type="text/x-handlebars-template">
+  <table id='percentages-table' class='table is-striped is-fullwidth is-narrow'>
+    <thead>
+      <tr>
+      <th>Percent</th><th>A</th><th>B</th><th>C</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each data.percentages}}
+      <tr>
+        {{#each this}}<td>{{.}}</td>{{/each}}
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+
+</script>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+.has-bg-image { 
+  background-image: url(../images/karate.jpg) ;
+  background-position: center center;
+  background-repeat:  no-repeat;
+  background-attachment: fixed;
+  background-size:  cover;
+  background-color: #000;
+}
+
+.transparent-bg {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.transparent-bg-section {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.img-responsive {
+  display: block; 
+  max-width: 100%;
+  height: auto;
+} 
