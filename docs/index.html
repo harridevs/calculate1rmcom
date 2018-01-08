@@ -18,10 +18,10 @@
   <!-- Scripts -->
   <link rel="stylesheet" href="bower_components/chartist/dist/chartist.min.css">
   <script src="bower_components/chartist/dist/chartist.min.js"></script>
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Anton|Oswald" rel="stylesheet"> 
   <!-- CSS -->
   <link rel="stylesheet" href="css/bulma.css">
   <link rel="stylesheet" href="css/custom.css">
@@ -73,8 +73,8 @@
 
             <div class="column is-half">
               <div class="buttons has-addons is-right">
-                <span id='increase-weight-button' class="button"><i class="fas fa-plus"></i></span>
-                <span id='decrease-weight-button' class="button"><i class="fas fa-minus"></i></span>
+                <span id='increase-weight-button' class="button" style='width: 48%;'><i class="fas fa-plus"></i></span>
+                <span id='decrease-weight-button' class="button" style='width: 48%;'><i class="fas fa-minus"></i></span>
               </div>
             </div>
           </div>
@@ -89,8 +89,8 @@
             </div>
             <div class="column is-half">
               <div class="buttons has-addons is-right">
-                <span id='increase-reps-button' class="button"><i class="fas fa-plus"></i></span>
-                <span id='decrease-reps-button' class="button"><i class="fas fa-minus"></i></span>
+                <span id='increase-reps-button' class="button" style='width: 48%;'><i class="fas fa-plus"></i></span>
+                <span id='decrease-reps-button' class="button" style='width: 48%;'><i class="fas fa-minus"></i></span>
               </div>
             </div>
           </div>
@@ -159,23 +159,25 @@
   </section>
 
   <section class='transparent-bg-footer'>
-  <footer class='footer'>
-    <div class='container level'>
-      <div>
-        <p><i class="fas fa-copyright"></i> Copyright © 2016-2018 calculate1rm.com</p> 
-        <p><i class="fas fa-envelope-square"></i> admin (at) calculate1rm.com</p>
+    <footer class='footer'>
+      <div class='container level'>
+        <div>
+          <p><i class="fas fa-copyright"></i> Copyright © 2016-2018 calculate1rm.com</p> 
+          <p><i class="fas fa-envelope-square"></i> admin (at) calculate1rm.com</p>
+        </div>
+        <div class='level-right'>
+          <img src="https://bulma.io/images/made-with-bulma--dark.png" alt="Made with Bulma" width="128" height="24"/>
+        </div>
       </div>
-      <div class='level-right'>
-        <img src="https://bulma.io/images/made-with-bulma--dark.png" alt="Made with Bulma" width="128" height="24"/>
-      </div>
-    </div>
-  </footer>
-</section>
+    </footer>
+  </section>
 
 <!-- chart -->
 
 <div id='overlay' onClick='hideOverlay()'>
-  <div class="ct-chart ct-major-seventh"/>
+  <div class='chart-container'>
+    <div class="ct-chart ct-major-seventh"></div>
+  </div>
 </div>
 
 <!-- functionality and template -->
@@ -220,13 +222,5 @@
 </script>
 
 <script src="js/main.js"></script>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 </body>
 </html>

@@ -136,9 +136,6 @@ function updateCalculations() {
     return;
   
   updateData(weight, reps);
-  updateChartData();
-
-  chart = new Chartist.Line('.ct-chart', chartdata);
 
   // Create the tables with templates
   var source   = $("#reps-template").html();
@@ -183,10 +180,16 @@ function decreaseReps() {
 
 function showOverlay() {
   document.getElementById("overlay").style.display = "block";
+  updateChartData();
+  chart = new Chartist.Line('.ct-chart', chartdata);
 }
 
 function hideOverlay() {
   document.getElementById("overlay").style.display = "none";
+}
+
+function showRepsModal() {
+  $('#reps-modal').addClass('is-active');
 }
 
 // Prepare scripts

@@ -30,7 +30,15 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.8);
   z-index: 2;
   cursor: pointer;
 }
+#overlay .chart-container { margin: 10%;}
+
+.brzycki { color: #1A40FC; }
+.epley { color: #FF0066; }
+.lander { color: #951793; }
+
+h1 {font-family: 'Anton', sans-serif;}
+body {font-family: 'Oswald', sans-serif;}
