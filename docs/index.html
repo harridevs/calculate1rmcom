@@ -16,12 +16,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Scripts -->
+  <link rel="stylesheet" href="bower_components/chartist/dist/chartist.min.css">
+  <script src="bower_components/chartist/dist/chartist.min.js"></script>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
   <!-- CSS -->
   <link rel="stylesheet" href="css/bulma.css">
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css"> -->
   <link rel="stylesheet" href="css/custom.css">
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/favicon.png">
@@ -92,8 +94,9 @@
               </div>
             </div>
           </div>
+          <span class="button" onClick='showOverlay()' style='width: 100%;'><i class="fas fa-chart-line"></i> Show graph</span>
           <p class="subtitle">
-            NSCA calculations and graph coming soon. Until then you can use the <a href='old/index.html'>old site</a></p>
+            NSCA calculations coming soon. Until then you can use the <a href='old/index.html'>old site</a></p>
           </p>
         </div>
 
@@ -110,7 +113,7 @@
       </div>
     </div>
   </section>
-  
+
   <section class='section transparent-bg-section'>
     <div class="container">
       <div class="columns">
@@ -147,7 +150,6 @@
               <li>Epley, Boyd (1985). Boyd Epley Workout. Lincoln, NE: Body Enterprises p.86.</li>
               <li>Landers, J (1984). Maximum based on reps NSCA 6(6).</li>
             </ol>
-
             <h5>About this site</h5>
             <p>This site was created to be the best and most intuitive way to calculate 1RM and see the amount of reps you can get with a given weight. I created the site because I was unhappy with existing calculators. This service is not affiliated or sponsored by anyone.</p>
           </div>
@@ -169,6 +171,13 @@
     </div>
   </footer>
 </section>
+
+<!-- chart -->
+
+<div id='overlay' onClick='hideOverlay()'>
+  <div class="ct-chart ct-major-seventh"/>
+</div>
+
 <!-- functionality and template -->
 
 <script id="reps-template" type="text/x-handlebars-template">
@@ -211,5 +220,13 @@
 </script>
 
 <script src="js/main.js"></script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 </body>
 </html>

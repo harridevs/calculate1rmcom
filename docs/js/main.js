@@ -82,27 +82,49 @@ var repsdata = {
 
 function updateData(weight, reps) {
   var brzycki_c = calcCoefficients("brzycki");
-  var lander_c = calcCoefficients("lander");
   var epley_c = calcCoefficients("epley");
+  var lander_c = calcCoefficients("lander");
   var brzycki_1rm = get1RM(weight, reps, "brzycki");
   var epley_1rm = get1RM(weight, reps, "brzycki");
   var lander_1rm = get1RM(weight, reps, "brzycki");
 
-  var i = 0;
-  while (i < repsdata.data.reps.length) {
+  for (i = 0; i < repsdata.data.reps.length; i++) {
     repsdata.data.reps[i][1]=(brzycki_1rm / brzycki_c[i]).toFixed(0);
     repsdata.data.reps[i][2]=(epley_1rm / epley_c[i]).toFixed(0);
     repsdata.data.reps[i][3]=(lander_1rm / lander_c[i]).toFixed(0);
-    i++
   }
-  i = 0;
-  while (i < repsdata.data.percentages.length) {
+
+  for (i = 0; i < repsdata.data.percentages.length; i++) {
     repsdata.data.percentages[i][1]=(brzycki_1rm * percents[i]/100).toFixed(0);
     repsdata.data.percentages[i][2]=(epley_1rm * percents[i]/100).toFixed(0);
     repsdata.data.percentages[i][3]=(lander_1rm * percents[i]/100).toFixed(0);
-    i++
   }
   
+}
+
+var chartdata = {
+  // A labels array that can contain any sort of values
+  labels: [10,9,8,7,6,5,4,3,2,1],
+  // Our series array that contains series objects or in this case series data arrays
+  series: [
+
+  ]
+};
+
+var chart = null;
+
+function updateChartData() {
+
+  chartdata.series = [];
+
+  for (n = 0; n < 3; n++) {
+    var arr = [];
+    for (i=0; i < repsdata.data.reps.length; i++) {
+      arr.push(repsdata.data.reps[i][n+1]);
+    }
+    chartdata.series.push(arr.reverse());
+  }
+
 }
 
 function updateCalculations() {
@@ -114,6 +136,9 @@ function updateCalculations() {
     return;
   
   updateData(weight, reps);
+  updateChartData();
+
+  chart = new Chartist.Line('.ct-chart', chartdata);
 
   // Create the tables with templates
   var source   = $("#reps-template").html();
@@ -154,6 +179,14 @@ function decreaseReps() {
   reps = isNaN(reps) ? 0 : reps;
   if ( reps > 0 && reps <= 10 )
     $("#repsInput").val(reps);
+}
+
+function showOverlay() {
+  document.getElementById("overlay").style.display = "block";
+}
+
+function hideOverlay() {
+  document.getElementById("overlay").style.display = "none";
 }
 
 // Prepare scripts
