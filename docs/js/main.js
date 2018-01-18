@@ -85,8 +85,8 @@ function updateData(weight, reps) {
   var epley_c = calcCoefficients("epley");
   var lander_c = calcCoefficients("lander");
   var brzycki_1rm = get1RM(weight, reps, "brzycki");
-  var epley_1rm = get1RM(weight, reps, "brzycki");
-  var lander_1rm = get1RM(weight, reps, "brzycki");
+  var epley_1rm = get1RM(weight, reps, "epley");
+  var lander_1rm = get1RM(weight, reps, "lander");
 
   for (i = 0; i < repsdata.data.reps.length; i++) {
     repsdata.data.reps[i][1]=(brzycki_1rm / brzycki_c[i]).toFixed(0);
