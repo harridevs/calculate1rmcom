@@ -72,8 +72,8 @@ function updateData(weight, reps, nsca) {
   var epley_1rm = get1RM(weight, reps, "epley");
   var lander_1rm = get1RM(weight, reps, "lander");
   
-  repsdata.data.reps.splice(0);
-  repsdata.data.percentages.splice(0);
+  repsdata.data.reps = [];
+  repsdata.data.percentages = [];
 
   for (i = 0; i < 10; i++) {
     reps1=i+1;
@@ -91,7 +91,7 @@ function updateData(weight, reps, nsca) {
         reps5=(get1RM(weight, reps, nsca) / nscaCoefficients.bench[i]).toFixed(0);
       else if (nsca == 'Deadlift')
         reps5=(get1RM(weight, reps, nsca) / nscaCoefficients.deadlift[i]).toFixed(0);
-      else (nsca == 'Squat')
+      else if (nsca == 'Squat')
         reps5=(get1RM(weight, reps, nsca) / nscaCoefficients.squat[i]).toFixed(0);
       
       perc5=(get1RM(weight, reps, nsca) * percents[i]/100).toFixed(0);
