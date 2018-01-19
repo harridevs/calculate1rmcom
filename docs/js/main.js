@@ -164,6 +164,7 @@ function increaseWeight() {
   weight= parseInt(weight) + 5;
   weight = isNaN(weight) ? 0 : weight;
   $("#weightInput").val(weight);
+  updateCalculations();
 }
 
 function decreaseWeight() {
@@ -172,6 +173,7 @@ function decreaseWeight() {
   weight = isNaN(weight) ? 0 : weight;
   if ( weight > 0 )
     $("#weightInput").val(weight);
+    updateCalculations();
 }
 
 function increaseReps() {
@@ -180,6 +182,7 @@ function increaseReps() {
   reps = isNaN(reps) ? 0 : reps;
   if ( reps > 0 && reps <= 10 )
     $("#repsInput").val(reps);
+  updateCalculations();
 }
 
 function decreaseReps() {
@@ -188,6 +191,7 @@ function decreaseReps() {
   reps = isNaN(reps) ? 0 : reps;
   if ( reps > 0 && reps <= 10 )
     $("#repsInput").val(reps);
+    updateCalculations();
 }
 
 function showOverlay() {
