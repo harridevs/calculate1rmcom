@@ -66,7 +66,7 @@
             <div class="column is-half">
               <div class="field">
                 <div class="control">
-                  <input id="weightInput" class="input" type="text" placeholder="weight" value='100'>
+                  <input id="weightInput" class="input" type="number" placeholder="weight" value='100' min='1'>
                 </div>
               </div>
             </div>
@@ -83,7 +83,7 @@
             <div class="column is-half">
               <div class="field">
                 <div class="control">
-                  <input id="repsInput" class="input" type="text" placeholder="reps" value='10'>
+                  <input id="repsInput" class="input" type="number" placeholder="reps" value='10' min='1' max='10'>
                 </div>
               </div>
             </div>
@@ -94,10 +94,21 @@
               </div>
             </div>
           </div>
-          <span class="button" onClick='showOverlay()' style='width: 100%;'><i class="fas fa-chart-line"></i> &nbsp;Show graph</span>
-          <p>
-            NSCA calculations coming soon. Until then you can use the <a href='old/index.html'>old site</a></p>
-          </p>
+          <div class="columns is-mobile">
+            <div class="column is-half">
+              <div class="select">
+                <select id='nsca-selector' style='width: 100%;'>
+                  <option option='false'>No NSCA calculation</option>
+                  <option option='bench'>Bench</option>
+                  <option option='deadlift'>Deadlift</option>
+                  <option option='squat'>Squat</option>
+                </select>
+              </div>
+            </div>
+            <div class="column is-half">
+              <span class="button" onClick='showOverlay()' style='width: 100%;'><i class="fas fa-chart-line"></i> &nbsp;Show graph</span>    
+            </div>
+          </div>
         </div>
 
         <div class="column">
@@ -188,17 +199,17 @@
 
     <thead>
       <tr>
-        <th>Reps</th><th>Est. A</th><th>Est. B</th><th>Est. C</th>
+        {{#each data.replabels}}
+        <th>{{.}}</th>
+        {{/each}}
       </tr>
     </thead>
     <tbody>
-
       {{#each data.reps}}
         <tr>
           {{#each this}}<td>{{.}}</td>{{/each}}
         </tr>
       {{/each}}
-      
     </tbody>
   </table>
 
@@ -207,9 +218,9 @@
 <script id="percentages-template" type="text/x-handlebars-template">
   <table id='percentages-table' class='table is-striped is-fullwidth is-narrow'>
     <thead>
-      <tr>
-      <th>Percent</th><th>Est. A</th><th>Est. B</th><th>Est. C</th>
-      </tr>
+        {{#each data.percentlabels}}
+        <th>{{.}}</th>
+        {{/each}}
     </thead>
     <tbody>
     {{#each data.percentages}}
