@@ -1,8 +1,4 @@
 // Coefficients
-squatCoefficients    = [1, 1.0475, 1.130, 1.1575, 1.200, 1.242, 1.284, 1.326, 1.368, 1.410];
-benchCoefficients    = [1, 1.0350, 1.080, 1.1150, 1.150, 1.180, 1.220, 1.255, 1.290, 1.325];
-deadliftCoefficients = [1, 1.0650, 1.130, 1.1470, 1.164, 1.181, 1.198, 1.232, 1.232, 1.240];
-
 nscaCoefficients = {
   squat:    [1, 1.0650, 1.130, 1.1470, 1.164, 1.181, 1.198, 1.232, 1.232, 1.240],
   bench:    [1, 1.0475, 1.130, 1.1575, 1.200, 1.242, 1.284, 1.326, 1.368, 1.410],
@@ -26,7 +22,7 @@ function get1RM(weight, reps, method) {
   }
 
   else if ( method == "Squat" ) {
-    rm1= weight * squatCoefficients[reps-1];
+    rm1= weight * nscaCoefficients.squat[reps-1];
   }
 
   else if ( method == "Bench" ) {
@@ -34,7 +30,7 @@ function get1RM(weight, reps, method) {
   }
 
   else if ( method == "Deadlift" ) {
-    rm1= weight * deadliftCoefficients[reps-1];
+    rm1= weight * nscaCoefficients.deadlift[reps-1];
   }
 
   return rm1;
@@ -91,7 +87,13 @@ function updateData(weight, reps, nsca) {
     perc4=(lander_1rm * percents[i]/100).toFixed(0);
 
     if (nsca != 'No NSCA calculation') {
-      reps5=(get1RM(weight, reps, nsca) / benchCoefficients[i]).toFixed(0);
+      if (nsca == 'Bench')
+        reps5=(get1RM(weight, reps, nsca) / nscaCoefficients.bench[i]).toFixed(0);
+      else if (nsca == 'Deadlift')
+        reps5=(get1RM(weight, reps, nsca) / nscaCoefficients.deadlift[i]).toFixed(0);
+      else (nsca == 'Squat')
+        reps5=(get1RM(weight, reps, nsca) / nscaCoefficients.squat[i]).toFixed(0);
+      
       perc5=(get1RM(weight, reps, nsca) * percents[i]/100).toFixed(0);
       
       repsdata.data.reps.push([reps1,reps2,reps3,reps4, reps5]);
@@ -207,7 +209,7 @@ function showRepsModal() {
 $(document).ready(function(){
 
   nsca = $('#nsca-selector').val();
-  
+
   // On document load
   updateCalculations();
   
