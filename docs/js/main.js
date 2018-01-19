@@ -144,7 +144,7 @@ function updateCalculations() {
   reps = $("#repsInput").val();
   rm1 = 0;
 
-  if ( reps < 1 && typeof r !== 'number' )
+  if ( reps < 1 || reps > 10 )
     return;
   
   updateData(weight, reps, nsca);
@@ -159,39 +159,27 @@ function updateCalculations() {
   $("#percentagesTable").html(template(repsdata));
 }
 
-function increaseWeight() {
-  weight= $("#weightInput").val();
-  weight= parseInt(weight) + 5;
-  weight = isNaN(weight) ? 0 : weight;
-  $("#weightInput").val(weight);
+function changeValue(input, delta, min, max) {
+
+  if (input == 'weight') {
+    val = $("#weightInput").val();
+  } else if (input == 'reps') {
+    val = $("#repsInput").val();
+  }
+
+  newVal = parseInt(val) + delta;
+
+  if (!isNaN(newVal) && newVal >= min && newVal <= max)
+    val = newVal;
+  else
+    val = val;
+
+  if (input == 'weight') {
+    $("#weightInput").val(val);
+  } else {
+    $("#repsInput").val(val);
+  }
   updateCalculations();
-}
-
-function decreaseWeight() {
-  weight= $("#weightInput").val();
-  weight= parseInt(weight) - 5;
-  weight = isNaN(weight) ? 0 : weight;
-  if ( weight > 0 )
-    $("#weightInput").val(weight);
-    updateCalculations();
-}
-
-function increaseReps() {
-  reps= $("#repsInput").val();
-  reps= parseInt(reps) + 1;
-  reps = isNaN(reps) ? 0 : reps;
-  if ( reps > 0 && reps <= 10 )
-    $("#repsInput").val(reps);
-  updateCalculations();
-}
-
-function decreaseReps() {
-  reps= $("#repsInput").val();
-  reps= parseInt(reps) - 1;
-  reps = isNaN(reps) ? 0 : reps;
-  if ( reps > 0 && reps <= 10 )
-    $("#repsInput").val(reps);
-    updateCalculations();
 }
 
 function showOverlay() {
@@ -202,10 +190,6 @@ function showOverlay() {
 
 function hideOverlay() {
   document.getElementById("overlay").style.display = "none";
-}
-
-function showRepsModal() {
-  $('#reps-modal').addClass('is-active');
 }
 
 // Prepare scripts
@@ -219,13 +203,9 @@ $(document).ready(function(){
   
   // On input value change
   
-  $('#repsInput').on('input',function(e){
-    updateCalculations();
-  });
+  $('#repsInput').on('input',function(e){ updateCalculations(); });
   
-  $('#weightInput').on('input',function(e){
-    updateCalculations();
-  });
+  $('#weightInput').on('input',function(e){ updateCalculations(); });
   
   $('#nsca-selector').change(function() {
     nsca=$(this).val();
@@ -234,9 +214,9 @@ $(document).ready(function(){
   
   // Button click handlers
   
-  $('#increase-weight-button').on('click',function(e){ increaseWeight(); });
-  $('#decrease-weight-button').on('click',function(e){ decreaseWeight(); });
-  $('#increase-reps-button').on('click',function(e){ increaseReps(); });
-  $('#decrease-reps-button').on('click',function(e){ decreaseReps(); });
+  $('#increase-weight-button').on('click',function(e){ changeValue('weight', 5, 1, 9999); });
+  $('#decrease-weight-button').on('click',function(e){ changeValue('weight', -5, 1, 9999); });
+  $('#increase-reps-button').on('click',function(e){ changeValue('reps', 1, 1, 10); });
+  $('#decrease-reps-button').on('click',function(e){ changeValue('reps', -1, 1, 10); });
 
 });
