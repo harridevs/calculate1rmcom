@@ -36,6 +36,8 @@
 }
 #overlay .chart-container { margin: 10%;}
 
+#hero-iframe { float: right; }
+
 .brzycki { color: #1A40FC; }
 .epley { color: #FF0066; }
 .lander { color: #951793; }
