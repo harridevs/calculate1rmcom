@@ -219,4 +219,7 @@ $(document).ready(function(){
   $('#increase-reps-button').on('click',function(e){ changeValue('reps', 1, 1, 10); });
   $('#decrease-reps-button').on('click',function(e){ changeValue('reps', -1, 1, 10); });
 
+  // Add email
+  $('span#email-address').text('calculate1rm @ tapio.design');
+
 });
