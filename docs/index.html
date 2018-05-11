@@ -21,7 +21,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Anton|Oswald" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Anton|Oswald" rel="stylesheet">
   <!-- CSS -->
   <link rel="stylesheet" href="css/bulma.css">
   <link rel="stylesheet" href="css/custom.css">
@@ -39,12 +39,12 @@
 </head>
 <body class='has-bg-image'>
   <noscript>JavaScript is off. There's no way to calculate anything if you don't enable it from your browser. Here are the <a href="http://www.enable-javascript.com" target="_blank"> instructions how to enable JavaScript in your web browser</a></noscript>
-  
+
   <section class="hero transparent-bg-section">
     <div class="hero-body">
       <div class="container">
 
-        
+
         <div class="columns">
             <div class="column">
               <h1 class="title">
@@ -57,7 +57,9 @@
               </p>
             </div>
             <div class="column">
-                <iframe id='hero-iframe' src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=13&l=ez&f=ifr&linkID=9de6a09cf2ec54c5f7dc2a0b24e5c665&t=calculate1rm-20&tracking_id=calculate1rm-20" width="468" height="60" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+              <p class='has-text-centered-mobile has-text-right-tablet'>
+                <a onClick="ga('send', 'event', 'Link', 'Click', 'iHerb promo');" class='has-text-danger' href='https://www.iherb.com/c/Sports-Nutrition?rcode=TAP695'>Check out iHerb supplement offers</a>
+              </p>
             </div>
           </div>
       </div>
@@ -68,7 +70,7 @@
     <div class="container">
       <div class="columns">
         <div class="column">
-          
+
           <h2 class="title is-3">Weight and reps</h2>
 
           <div class="columns is-mobile">
@@ -115,9 +117,10 @@
               </div>
             </div>
             <div class="column is-half">
-              <span class="button" onClick='showOverlay()' style='width: 100%;'><i class="fas fa-chart-line"></i> &nbsp;Show graph</span>    
+              <span class="button" onClick='showOverlay()' style='width: 100%;'><i class="fas fa-chart-line"></i> &nbsp;Show graph</span>
             </div>
           </div>
+
         </div>
 
         <div class="column">
@@ -183,7 +186,7 @@
     <footer class='footer'>
       <div class='container level'>
         <div>
-          <p><i class="fas fa-copyright"></i> Copyright © 2016-2018 calculate1rm.com</p> 
+          <p><i class="fas fa-copyright"></i> Copyright © 2016-2018 calculate1rm.com</p>
           <p><i class="fas fa-envelope-square"></i> <span id='email-address'>admin (at) calculate1rm.com</span></p>
           <p><i class="fab fa-facebook-square"></i> <a href='http://www.facebook.com/calculate1rmcom' style='color: white;'>Facebook</a></p>
         </div>
