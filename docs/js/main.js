@@ -71,7 +71,7 @@ function updateData(weight, reps, nsca) {
   var brzycki_1rm = get1RM(weight, reps, "brzycki");
   var epley_1rm = get1RM(weight, reps, "epley");
   var lander_1rm = get1RM(weight, reps, "lander");
-  
+
   repsdata.data.reps = [];
   repsdata.data.percentages = [];
 
@@ -80,7 +80,7 @@ function updateData(weight, reps, nsca) {
     reps2=(brzycki_1rm / brzycki_c[i]).toFixed(0);
     reps3=(epley_1rm / epley_c[i]).toFixed(0);
     reps4=(lander_1rm / lander_c[i]).toFixed(0);
-    
+
     perc1=percents[i].toFixed(0)+'%';
     perc2=(brzycki_1rm * percents[i]/100).toFixed(0);
     perc3=(epley_1rm * percents[i]/100).toFixed(0);
@@ -93,16 +93,16 @@ function updateData(weight, reps, nsca) {
         reps5=(get1RM(weight, reps, nsca) / nscaCoefficients.deadlift[i]).toFixed(0);
       else if (nsca == 'Squat')
         reps5=(get1RM(weight, reps, nsca) / nscaCoefficients.squat[i]).toFixed(0);
-      
+
       perc5=(get1RM(weight, reps, nsca) * percents[i]/100).toFixed(0);
-      
+
       repsdata.data.reps.push([reps1,reps2,reps3,reps4, reps5]);
       repsdata.data.percentages.push([perc1,perc2,perc3,perc4, perc5]);
-    } 
+    }
     else {
       repsdata.data.reps.push([reps1,reps2,reps3,reps4]);
       repsdata.data.percentages.push([perc1,perc2,perc3,perc4]);
-    } 
+    }
   }
 
   // Adjust labels
@@ -146,7 +146,7 @@ function updateCalculations() {
 
   if ( reps < 1 || reps > 10 )
     return;
-  
+
   updateData(weight, reps, nsca);
 
   // Create the tables with templates
@@ -200,26 +200,26 @@ $(document).ready(function(){
 
   // On document load
   updateCalculations();
-  
+
   // On input value change
-  
+
   $('#repsInput').on('input',function(e){ updateCalculations(); });
-  
+
   $('#weightInput').on('input',function(e){ updateCalculations(); });
-  
+
   $('#nsca-selector').change(function() {
     nsca=$(this).val();
     updateCalculations();
   });
-  
+
   // Button click handlers
-  
+
   $('#increase-weight-button').on('click',function(e){ changeValue('weight', 5, 1, 9999); });
   $('#decrease-weight-button').on('click',function(e){ changeValue('weight', -5, 1, 9999); });
   $('#increase-reps-button').on('click',function(e){ changeValue('reps', 1, 1, 10); });
   $('#decrease-reps-button').on('click',function(e){ changeValue('reps', -1, 1, 10); });
 
   // Add email
-  $('span#email-address').text('calculate1rm @ tapio.design');
+  $('span#email-address').text('htapio @ outlook.com');
 
 });
