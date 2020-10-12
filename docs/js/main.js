@@ -14,11 +14,19 @@ function get1RM(weight, reps, method) {
   }
 
   else if ( method == "epley" ) {
-    rm1= weight * ( 1 + ( reps / 30));
+    if (reps == 1) {
+      rm1 = weight;
+    } else {
+      rm1= weight * ( 1 + ( reps / 30));
+    }
   }
 
   else if ( method == "lander" ) {
-    rm1= weight / ( 1.013 - ( 0.0267123 * reps ) );
+    if (reps == 1) {
+      rm1 = weight;
+    } else {
+      rm1= weight / ( 1.013 - ( 0.0267123 * reps ) );
+    }
   }
 
   else if ( method == "Squat" ) {
